@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Nunito', sans-serif;
+    overflow: hidden;
+  }
+}
+
+/* ── Leg running animations ── */
+@keyframes legSwing {
+  0%, 100% { transform: rotate(-25deg); }
+  50% { transform: rotate(25deg); }
+}
+
+@keyframes legSwingAlt {
+  0%, 100% { transform: rotate(25deg); }
+  50% { transform: rotate(-25deg); }
+}
+
+.animate-leg-a {
+  transform-origin: top center;
+  animation: legSwing 0.35s ease-in-out infinite;
+}
+
+.animate-leg-b {
+  transform-origin: top center;
+  animation: legSwingAlt 0.35s ease-in-out infinite;
+}
+
+/* ── Flower sway ── */
+@keyframes flowerSway {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(8deg); }
+}
+
+.animate-sway {
+  transform-origin: bottom center;
+  animation: flowerSway 2.5s ease-in-out infinite;
+}
+
+.animate-sway-slow {
+  transform-origin: bottom center;
+  animation: flowerSway 3.5s ease-in-out infinite;
+}
+
+/* ── Rabbit bobbing (start screen) ── */
+@keyframes bobbing {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bob {
+  animation: bobbing 2s ease-in-out infinite;
+}
+
+/* ── Red pulse danger overlay ── */
+@keyframes pulseRed {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 0.35; }
+}
+
+.animate-pulse-red {
+  animation: pulseRed 0.6s ease-in-out infinite;
+}
+
+/* ── Cloud drift ── */
+@keyframes cloudDrift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-cloud-drift {
+  animation: cloudDrift 40s linear infinite;
+}
+
+.animate-cloud-drift-slow {
+  animation: cloudDrift 60s linear infinite;
+}
+
+/* ── Word flash on correct ── */
+@keyframes wordFlash {
+  0% { color: #4ade80; transform: scale(1.15); }
+  100% { color: white; transform: scale(1); }
+}
+
+.animate-word-flash {
+  animation: wordFlash 0.3s ease-out forwards;
+}
+
+/* ── Input glow ── */
+.input-glow:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(134, 239, 172, 0.6), 0 0 20px rgba(134, 239, 172, 0.3);
+}
+
+/* ── Speed bar fill ── */
+.speed-bar {
+  transition: width 0.2s ease-out;
+}
+
+/* Wolf bouncing while running */
+@keyframes wolfBob {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Wolf pulsing when very close */
+@keyframes wolfPulse {
+  0%, 100% { filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4)) drop-shadow(0 0 4px rgba(244, 67, 54, 0.4)); }
+  50% { filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4)) drop-shadow(0 0 16px rgba(244, 67, 54, 0.9)); }
+}
+
+.animate-wolf-danger {
+  animation: wolfPulse 0.5s ease-in-out infinite;
+}

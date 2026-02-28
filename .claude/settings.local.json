@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(npx playwright-cli:*)",
+      "Bash(/tmp/verify-ttp.mjs:*)",
+      "Bash(/tmp/verify-ttp.cjs:*)",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Bash(gh auth:*)",
+      "Bash(git:*)"
+    ]
+  }
+}
