@@ -101,18 +101,103 @@
   transition: width 0.2s ease-out;
 }
 
-/* Wolf bouncing while running */
-@keyframes wolfBob {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-6px); }
+/* ══════════════════════════════════════
+   RABBIT ANIMATIONS
+   ══════════════════════════════════════ */
+
+/* Galloping legs — same keyframe shape as wolf */
+@keyframes rabbitLegA {
+  0%, 100% { transform: rotate(-32deg); }
+  50%       { transform: rotate(36deg);  }
+}
+@keyframes rabbitLegB {
+  0%, 100% { transform: rotate(32deg);  }
+  50%       { transform: rotate(-36deg); }
 }
 
-/* Wolf pulsing when very close */
+.rabbit-gallop-a {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: rabbitLegA 0.28s ease-in-out infinite;
+}
+.rabbit-gallop-b {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: rabbitLegB 0.28s ease-in-out infinite;
+}
+
+/* Standing ear flutters in the breeze while running */
+@keyframes rabbitEarFlutter {
+  0%, 100% { transform: rotate(-7deg);  }
+  50%       { transform: rotate(7deg);   }
+}
+.rabbit-ear-flutter {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: rabbitEarFlutter 0.28s ease-in-out infinite;
+}
+
+/* Body bounces on each stride */
+@keyframes rabbitBounce {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-7px); }
+}
+.rabbit-bounce-run {
+  animation: rabbitBounce 0.28s ease-in-out infinite;
+}
+
+/* ── Wolf galloping legs ── */
+@keyframes wolfLegA {
+  0%, 100% { transform: rotate(-30deg); }
+  50%       { transform: rotate(34deg);  }
+}
+@keyframes wolfLegB {
+  0%, 100% { transform: rotate(30deg);  }
+  50%       { transform: rotate(-34deg); }
+}
+
+.wolf-gallop-a {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: wolfLegA 0.30s ease-in-out infinite;
+}
+.wolf-gallop-b {
+  transform-box: fill-box;
+  transform-origin: top center;
+  animation: wolfLegB 0.30s ease-in-out infinite;
+}
+
+/* ── Wolf tail stream ── */
+@keyframes wolfTailStream {
+  0%, 100% { transform: rotate(-16deg); }
+  50%       { transform: rotate(12deg);  }
+}
+.wolf-tail-run {
+  transform-box: fill-box;
+  transform-origin: bottom center;
+  animation: wolfTailStream 0.46s ease-in-out infinite;
+}
+
+/* ── Wolf whole-body bounce while galloping ── */
+@keyframes wolfBounce {
+  0%, 100% { transform: translateY(0px);  }
+  50%       { transform: translateY(-5px); }
+}
+.wolf-bounce-run {
+  animation: wolfBounce 0.30s ease-in-out infinite;
+}
+
+/* ── Wolf jaw snap (danger) ── */
+@keyframes wolfJawSnap {
+  0%, 100% { transform: rotate(0deg);   }
+  50%       { transform: rotate(14deg);  }
+}
+
+/* ── Wolf red glow (danger) ── */
 @keyframes wolfPulse {
-  0%, 100% { filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4)) drop-shadow(0 0 4px rgba(244, 67, 54, 0.4)); }
-  50% { filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.4)) drop-shadow(0 0 16px rgba(244, 67, 54, 0.9)); }
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(244,67,54,0.3)); }
+  50%       { filter: drop-shadow(0 0 14px rgba(244,67,54,0.95)) drop-shadow(0 0 6px rgba(244,67,54,0.6)); }
 }
-
 .animate-wolf-danger {
-  animation: wolfPulse 0.5s ease-in-out infinite;
+  animation: wolfPulse 0.45s ease-in-out infinite;
 }

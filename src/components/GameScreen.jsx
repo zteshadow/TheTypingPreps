@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
 import Rabbit from './Rabbit'
 import Wolf from './Wolf'
+import GrassHill from './GrassHill'
 import { getWord } from '../data/words'
 
 // ── Game constants ──
@@ -393,30 +394,16 @@ export default function GameScreen({ onGameOver, onVictory }) {
             </div>
           ))}
 
-          {/* ── Bright yellow-green foreground ground (both halves) ── */}
+          {/* ── Hand-drawn SVG grass hill (both halves) ── */}
           {[0, 1].map(half => (
             <div
               key={`ground-${half}`}
               className="absolute bottom-0"
-              style={{
-                left: `${half * 50}%`,
-                width: '50%',
-                height: '40%',
-                background: 'linear-gradient(180deg, #A8D840 0%, #8DC830 16%, #6AAE20 52%, #508018 100%)',
-                borderRadius: '45% 45% 0 0 / 10% 10% 0 0',
-              }}
+              style={{ left: `${half * 50}%`, width: '50%', height: '40%' }}
             >
-              {/* Hill crest highlight */}
-              <div
-                className="absolute top-0 left-0 right-0"
-                style={{
-                  height: '10px',
-                  background: 'linear-gradient(90deg, transparent, rgba(210,255,80,0.5) 25%, rgba(220,255,90,0.65) 60%, transparent)',
-                  borderRadius: 'inherit',
-                }}
-              />
-              {/* Flowers */}
-              {GROUND_FLOWERS.map((f, i) => <FlowerSprite key={i} {...f} />)}
+              <GrassHill heightPct={100} gradId={`gameHillGrad${half}`}>
+                {GROUND_FLOWERS.map((f, i) => <FlowerSprite key={i} {...f} />)}
+              </GrassHill>
             </div>
           ))}
         </div>

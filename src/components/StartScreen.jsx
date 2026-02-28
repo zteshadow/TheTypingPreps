@@ -1,4 +1,5 @@
 import Rabbit from './Rabbit'
+import GrassHill from './GrassHill'
 
 // ── Flower data matching the reference: white daisies + yellow wildflowers ──
 const FLOWERS = [
@@ -206,27 +207,10 @@ export default function StartScreen({ onStart }) {
         </svg>
       </div>
 
-      {/* ── Rolling foreground hill (bright yellow-green) ── */}
-      <div
-        className="absolute bottom-0 left-0 right-0"
-        style={{
-          height: '42%',
-          background: 'linear-gradient(180deg, #A8D840 0%, #8DC830 18%, #6AAE20 55%, #528818 100%)',
-          borderRadius: '55% 55% 0 0 / 22% 22% 0 0',
-        }}
-      >
-        {/* bright highlight strip at hill crest */}
-        <div
-          className="absolute top-0 left-0 right-0"
-          style={{
-            height: '12px',
-            background: 'linear-gradient(90deg, transparent, rgba(220,255,100,0.5) 30%, rgba(220,255,100,0.6) 60%, transparent)',
-            borderRadius: 'inherit',
-          }}
-        />
-        {/* Flowers */}
+      {/* ── Rolling foreground hill (hand-drawn SVG) ── */}
+      <GrassHill heightPct={42} gradId="startHillGrad">
         {FLOWERS.map((f, i) => <Flower key={i} {...f} />)}
-      </div>
+      </GrassHill>
 
       {/* ── Title ── */}
       <div className="absolute top-8 left-0 right-0 flex flex-col items-center pointer-events-none">
@@ -253,7 +237,7 @@ export default function StartScreen({ onStart }) {
       {/* ── Rabbit idle bobbing on hill ── */}
       <div
         className="absolute animate-bob"
-        style={{ bottom: '42%', left: '50%', transform: 'translateX(-50%)', marginBottom: '-18px' }}
+        style={{ bottom: '42%', left: '50%', transform: 'translateX(-50%)', marginBottom: '-10px' }}
       >
         <Rabbit running={false} size={1.2} />
       </div>
