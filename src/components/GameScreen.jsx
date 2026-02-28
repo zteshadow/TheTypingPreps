@@ -432,16 +432,19 @@ export default function GameScreen({ onGameOver, onVictory }) {
       </div>
 
       {/* ── Typing section ── */}
+      {/* min-height/max-height so it compresses on small viewports (iOS keyboard open) */}
       <div
-        className="flex-shrink-0 z-20 flex flex-col items-center justify-center gap-3 px-6"
+        className="flex-shrink-0 z-20 flex flex-col items-center justify-center gap-2 px-6"
         style={{
+          minHeight: '130px',
+          maxHeight: '180px',
           height: '180px',
           background: 'linear-gradient(180deg, rgba(74,130,50,0.95) 0%, rgba(45,80,30,0.98) 100%)',
           borderTop: '3px solid rgba(255,255,255,0.15)',
         }}
       >
         {/* Word prompt */}
-        <div className="text-3xl font-black tracking-widest text-white opacity-40 pointer-events-none">
+        <div className="text-2xl font-black tracking-widest text-white opacity-40 pointer-events-none">
           {currentWord}
         </div>
 
@@ -449,6 +452,8 @@ export default function GameScreen({ onGameOver, onVictory }) {
         <input
           ref={inputRef}
           type="text"
+          inputMode="text"
+          enterKeyHint="go"
           value={inputVal}
           onChange={handleInput}
           onKeyDown={e => {

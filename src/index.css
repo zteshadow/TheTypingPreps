@@ -3,9 +3,24 @@
 @tailwind utilities;
 
 @layer base {
+  /* ── iOS scroll-lock ──
+     position:fixed prevents Safari from auto-scrolling the page
+     when the keyboard opens and the focused input is near the bottom.
+     The Visual Viewport listener in App.jsx then keeps --app-height
+     tracking the true visible area so the layout stays correct. */
+  html {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
   body {
     font-family: 'Nunito', sans-serif;
+    position: fixed;
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    touch-action: manipulation; /* disable double-tap zoom */
   }
 }
 
